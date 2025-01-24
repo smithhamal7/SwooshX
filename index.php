@@ -17,7 +17,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: url('a.jpg') no-repeat center center fixed; /* Path to your image */
+            background: url('a.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
         }
