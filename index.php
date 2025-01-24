@@ -17,7 +17,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: url('a.jpg') no-repeat center center fixed;
+            background: url('f.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
         }
@@ -25,6 +25,7 @@
 </head>
 <body>
     <?php include 'navbar.php'; ?>
+    
 
     <main style ="color:white">
         <h1>Welcome to SwooshX</h1>

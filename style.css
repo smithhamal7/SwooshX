@@ -24,13 +24,13 @@ header{
 }
 .logo{
     font-size: 2em;
-    color: blue;
+    color: maroon;
     user-select: none;
 }
 .navigation a {
     position: relative;
     font-size: 1.1em;
-    color: maroon;
+    color:maroon;
     text-decoration:none;
     font-weight: 500;
     margin-left: 40px;
@@ -42,7 +42,6 @@ header{
     bottom: -6px;
     width: 100px;
     height: 3px;
-    background: #fff;
     border-radius: 5px;
     transform-origin: right;
     transform: scaleX(0);
@@ -55,20 +54,15 @@ header{
 .navigation .btnLogin-popup{
     width: 130px;
     height: 50px;
-    background: blue;
+    background: white;
     border:2px solid black;
     outline: none;
     border-radius: 6px;
     cursor:pointer;
     font-size:1.1em;
-    color:#fff;
     font-weight:500;
     margin-left: 40px;
     transition: .5s;
-}
-.navigation .btnLogin-popup:hover{
-    background: maroon;
-    color: black;
 }
 
 .form_box h2{
@@ -180,7 +174,6 @@ header{
     text-align: center;
 }
 
-//product
 .products-container {
     max-width: 1200px;
     margin: 50px auto;
@@ -252,3 +245,4 @@ header{
     font-size: 0.9em;
     margin: 10px;
 }
+
