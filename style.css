@@ -11,6 +11,7 @@ body{
     background-size: cover;
     background-position: center;
 }
+
 header{
     position:fixed;
     top: 0;
@@ -27,7 +28,17 @@ header{
     color: maroon;
     user-select: none;
 }
+.navigation {
+    width: 100%;
+    position: relative;
+    font-size: 1.1em;
+    color:maroon;
+    text-decoration:none;
+    font-weight: 500;
+    margin-left: 40px;
+}
 .navigation a {
+    width: 100%;
     position: relative;
     font-size: 1.1em;
     color:maroon;
@@ -40,7 +51,7 @@ header{
     position: absolute;
     left:0;
     bottom: -6px;
-    width: 100px;
+    width: 100%;
     height: 3px;
     border-radius: 5px;
     transform-origin: right;
@@ -51,7 +62,9 @@ header{
     transform: scaleX(1);
 }
 
-.navigation .btnLogin-popup{
+.btnLogin-popup {
+
+    float: right;
     width: 130px;
     height: 50px;
     background: white;
@@ -63,7 +76,29 @@ header{
     font-weight:500;
     margin-left: 40px;
     transition: .5s;
+    text-decoration: none; /* Remove underline for anchor */
+    /* display: inline-block; */
+   
 }
+
+.btnLogin-popup:hover {
+    background-color: #909499;
+}
+
+
+/* .navigation .btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: white;
+    border:2px solid black;
+    outline: none;
+    border-radius: 6px;
+    cursor:pointer;
+    font-size:1.1em;
+    font-weight:500;
+    margin-left: 40px;
+    transition: .5s;
+} */
 
 .form_box h2{
     font-size: 2em;
@@ -94,8 +129,6 @@ header{
     top:-5px;
 }
    
-
-
 .input-box input {
     width: 100%;
     height: 100%;
@@ -245,4 +278,61 @@ header{
     font-size: 0.9em;
     margin: 10px;
 }
+/* Admin Dashboard Styles */
+.dashboard {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+}
+
+.dashboard h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-actions {
+    margin-top: 50px;
+}
+
+.admin-actions button {
+    background-color: maroon;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-actions button:hover {
+    background-color: darkred;
+}
+
 

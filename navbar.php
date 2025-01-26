@@ -1,14 +1,10 @@
-<?php
-session_start();
-?>
 
 <header>
     <h2 class="logo">SwooshX</h2>
     <nav class="navigation">
-        <a href="index.php">Home</a>
-        <a href="#">About</a>
-        <a href="product.php">Product</a>
-        <a href="#">Contact</a>
+       
+        <a href="home.php">Home</a>
+        <a href="cart.php">Cart</a>
         <?php if (isset($_SESSION['username'])): ?>
             <!-- Show logout button if logged in -->
             <form action="logout.php" method="POST" style="display: inline;">
