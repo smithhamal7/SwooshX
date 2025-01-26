@@ -1,8 +1,8 @@
 <?php
-
 // Start the session
 session_start();
 
+// Include database connection
 include 'db.php';
 
 // Fetch products from the database
@@ -34,7 +34,7 @@ $result = $conn->query($query);
                             <p><?= htmlspecialchars($product['description']); ?></p>
                             <span class="price">$<?= htmlspecialchars(number_format($product['price'], 2)); ?></span>
                             <?php if (isset($_SESSION['username'])): ?>
-                                <button class="btn" onclick="addToCart($product['id'])">Add to Cart</button>
+                                <button class="btn" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
                             <?php else: ?>
                                 <p class="login-message">Login to purchase</p>
                             <?php endif; ?>
@@ -46,8 +46,6 @@ $result = $conn->query($query);
             </div>
         </div>
     </main>
-
-    
 
 <script>
 function addToCart(productId) {

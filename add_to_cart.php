@@ -1,46 +1,56 @@
 <?php
+// Start the session
 session_start();
 
-// Check if the cart exists in the session
-if (!isset($_SESSION['cart'])) {
-    // If the cart doesn't exist, initialize it as an empty array
-    $_SESSION['cart'] = [];
-}
+// Include database connection
+include 'db.php';
 
-// Ensure the request is POST
+// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the JSON input
-    $input = file_get_contents('php://input');
-    $data = json_decode($input, true);
+    // Retrieve the JSON data sent in the request body
+    $data = json_decode(file_get_contents('php://input'), true);
 
-    // Check if product_id is present
-    if (isset($data['product_id'])) {
-        $productId = $data['product_id'];
+    // Validate the product_id from the request
+    if (!isset($data['product_id']) || !is_numeric($data['product_id'])) {
+        echo json_encode(['success' => false, 'message' => 'Invalid product ID.']);
+        exit;
+    }
 
-        // Initialize cart in session if not already set
+    $productId = (int)$data['product_id'];
+
+    // Fetch product details from the database
+    $query = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $productId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+
+        // Add product to the session cart
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
 
-        // Add product to the cart (you can add quantity logic here)
+        // Check if the product is already in the cart
         if (isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId]['quantity'] += 1;
+            $_SESSION['cart'][$productId]['quantity'] += 1; // Increment quantity
         } else {
             $_SESSION['cart'][$productId] = [
-                'product_id' => $productId,
+                'name' => $product['name'],
+                'price' => $product['price'],
                 'quantity' => 1,
+                'image_url' => $product['image_url'],
             ];
         }
 
-        // Respond with success
         echo json_encode(['success' => true, 'message' => 'Product added to cart.']);
     } else {
-        // Respond with an error
-        echo json_encode(['success' => false, 'message' => 'Product ID is missing.']);
+        echo json_encode(['success' => false, 'message' => 'Product not found.']);
     }
+
+    $stmt->close();
 } else {
-    // Invalid request method
-    http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
-?>

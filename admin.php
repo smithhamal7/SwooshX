@@ -52,14 +52,7 @@ $orderCount = $orderResult->fetch_assoc()['order_count'];
                     <p><?= $orderCount; ?></p>
                 </div>
             </div>
-
-            <div class="admin-actions">
-                <h2>Manage Products</h2>
-                <button onclick="window.location.href='manage_products.php'">Add / Edit Products</button>
-            </div>
         </div>
     </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
