@@ -13,7 +13,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: url('f.jpg') no-repeat center center fixed;
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
         }
