@@ -2,7 +2,6 @@
 session_start();
 include 'db.php';
 
-// Initialize error message
 $error_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -21,20 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verify password
         if (password_verify($password, $user['password'])) {
-            // Password is correct, set session
+            // Set session variables
             $_SESSION['username'] = $user['username'];
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['logged_in'] = true;
 
-            echo 'Session variables are set.';
-            session_regenerate_id(true);
-
-            // Check user role and redirect accordingly
+            // Redirect based on user role
             if ($user['role'] === 'admin') {
-                header("Location: admin.php"); // Redirect admin to admin panel
+                header("Location: admin.php"); // Admin page
             } else {
-                header("Location: home.php"); // Redirect other users to home page
+                header("Location: home.php"); // Home page
             }
             exit();
         } else {
@@ -43,15 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error_message = "Email not found. Please register first.";
     }
-
-    session_set_cookie_params([
-        'lifetime' => 0,            // Session lasts until browser closes
-        'path' => '/',              // Available across the entire domain
-        'domain' => '',             // Default to the current domain
-        'secure' => true,           // Send cookies only over HTTPS
-        'httponly' => true,         // Prevent JavaScript access to session cookie
-        'samesite' => 'Strict'      // Prevent cross-site request
-    ]);
 
     $stmt->close();
     $conn->close();

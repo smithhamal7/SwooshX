@@ -572,6 +572,18 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+/* Add these new styles for messages */
+.success-message {
+    color: green;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 15px;
+}
 
 
 

@@ -2,10 +2,20 @@
 // Start the session
 session_start();
 
-// Check if the payment method is set to Cash on Delivery (COD)
-if (isset($_GET['payment']) && $_GET['payment'] === 'cod') {
-    // Clear the cart after the order is confirmed
-    unset($_SESSION['cart']);
-    echo "Your order has been confirmed! Payment will be collected upon delivery.";
+// Clear the cart after successful order confirmation
+if (isset($_GET['payment'])) {
+    $paymentMethod = $_GET['payment'];
+
+    if ($paymentMethod === 'khalti' || $paymentMethod === 'cod') {
+        unset($_SESSION['cart']); // Clear the cart
+        echo "<h1>Order Confirmed!</h1>";
+        echo "<p>Payment Method: " . strtoupper($paymentMethod) . "</p>";
+        echo "<p>Thank you for your purchase!</p>";
+        exit;
+    }
 }
+
+// Redirect to home if accessed directly
+header('Location: home.php');
+exit;
 ?>
