@@ -52,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ";
 
             $mail->send();
-            $success_message = "An OTP has been sent to your email address.";
+
+            // Redirect to OTP verification page
+            header("Location: verify_otp.php");
+            exit(); // Stop further execution after the redirect
         } catch (Exception $e) {
             $error_message = "Failed to send OTP. Mailer Error: {$mail->ErrorInfo}";
         }
